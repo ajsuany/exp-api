@@ -12,7 +12,7 @@ router.get('/',async(req,res,next) => {//READ
 
 router.post('/', async(req, res, next) => { //CREATE
     console.log("Inserts one user document in User collection......");
-    const userDoc = new UserModel({"name": req.body.name, "address": req.body.address, "createdAt": new Date()})
+    const userDoc = new UserModel({"name": req.body.name, "address": req.body.address,"gender": req.body.gender, "createdAt": new Date()})
     const createdUser = await userDoc.save();
     console.log("user is created in User collection......", createdUser);
     res.send(createdUser);
@@ -23,7 +23,8 @@ router.put('/:userId', async(req,res,next) =>{// full update
         _id: req.params.userId
     }, {
         "name": req.body.name,
-        "address": req.body.address
+        "address": req.body.address,
+        "gender": req.body.gender
     }, {new: true});
     res.send(updatedUser);
 })

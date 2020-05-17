@@ -11,7 +11,7 @@ router.get('/', async(req,res,next) => {
 
 router.post('/',async(req,res,next) => {// intert row in users
     console.log("users routing with post nethod")
-    const insertedUsers = new UserModel({"name":req.body.name,"address":req.body.address, "createdAt": new Date()})
+    const insertedUsers = new UserModel({"name":req.body.name,"address":req.body.address, "gender": req.body.gender, "createdAt": new Date()})
     const createdUsers = await insertedUsers.save()
     res.send(createdUsers)
 })
