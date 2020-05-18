@@ -23,5 +23,16 @@ router.delete('/:userID',async(req,res,next) => {//delete row in users
 
           
 })
+router.put('/:userId', async(req,res,next) =>{// full update
+    console.log("Update one user document in User collection......");
+    const updatedUser = await UserModel.findByIdAndUpdate({
+        _id: req.params.userId
+    }, {
+        "name": req.body.name,
+        "address": req.body.address,
+        "gender": req.body.gender
+    }, {new: true});
+    res.send(updatedUser);
+})
 
 module.exports = router;
